@@ -11,6 +11,9 @@ from chapter3.dense_layer import Layer_Dense
 
 from chapter4.ReLu_class import Activation_ReLu
 
+
+from chapter5.cross_entropy_loss import Loss_CategoricalCrossentropy
+
 from nnfs.datasets import spiral_data
 
 inputs = [0, 2, -1, 3.3, -2.7, 1.1, 2.2, -100]
@@ -62,6 +65,8 @@ dense2 = Layer_Dense(3, 3)
 
 activation2 = Activation_Softmax()
 
+loss_function = Loss_CategoricalCrossentropy()
+
 dense1.forward(X)
 
 activation1.forward(dense1.output)
@@ -71,3 +76,8 @@ dense2.forward(activation1.output)
 activation2.forward(dense2.output)
 
 print(activation2.output[:5])
+
+
+loss = loss_function.calculate(activation2.output, y)
+
+print(f"Loss: {loss}")
