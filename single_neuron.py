@@ -1,3 +1,5 @@
+# A single neuron with 5 inputs, computed manually (no numpy) by summing
+# each input * its weight, plus one bias term.
 inputs = [1, 2, 2.5, 3, 3.5]
 weights = [0.2, 0.8, -0.5, 1.0, 4.0]
 # there is only one value for the bias because it is a single neuron.

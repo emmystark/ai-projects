@@ -1,3 +1,7 @@
+# Same layer-of-neurons computation as layer_of_neurons.py, but vectorized
+# with numpy and extended to a batch of 3 input samples at once.
+# np.dot(inputs, weights.T) computes every sample-neuron combination in one
+# call, replacing the nested Python loops from the manual version.
 import numpy as np
 
 inputs = [[1.0, 2.0, 3.0, 2.5],

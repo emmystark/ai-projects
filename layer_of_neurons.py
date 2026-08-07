@@ -1,3 +1,5 @@
+# A layer of 3 neurons (each with its own weights/bias) computed manually
+# with plain Python loops, before switching to numpy for the same operation.
 inputs = [1, 2, 3, 2.5]
 
 weights1 = [0.2, 0.8, -0.5, 1.0]
@@ -28,15 +30,17 @@ biases = [2, 3, 0.5]
 
 layer_outputs = []
 
+# Outer loop: one pass per neuron (its own weight vector + bias).
+# Inner loop: dot-product that neuron's weights against the shared inputs.
 for neuron_weights, neuron_bias in zip(weights, biases):
     neuron_output = 0
     for n_input, weight in zip(inputs, neuron_weights):
         # print(f"n_input: {n_input}, weight: {weight}")
         neuron_output += n_input * weight
         # print(f"neuron_output: {neuron_output}")
-        
+
     neuron_output += neuron_bias
-    
+
     layer_outputs.append(neuron_output)
 
 # print(outputs)

@@ -1,3 +1,6 @@
+# Chapter 3: chaining two Dense layers by hand — the output of the first
+# layer (3 neurons) becomes the input to the second layer (3 more neurons),
+# which is how depth (multiple hidden layers) works in a network.
 import numpy as np
 
 inputs = [[1.0, 2.0, 3.0, 2.5],
@@ -15,7 +18,7 @@ weights2 = [[0.1, -0.14, 0.5],
 
 biases2 = [-1, 2, -0.5]
 
-
+# First layer's output becomes the second layer's input.
 layer_outputs = np.dot(inputs, np.array(weights).T) + biases
 layer_outputs2 = np.dot(layer_outputs, np.array(weights2).T) + biases2
 

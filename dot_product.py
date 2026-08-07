@@ -1,3 +1,5 @@
+# Manual dot product of two 3-element vectors, done element-by-element
+# before switching to numpy's np.dot in later scripts.
 a = [1, 2, 3]
 b = [2, 3, 4]
 

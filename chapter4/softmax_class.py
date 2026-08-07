@@ -20,15 +20,20 @@ inputs = [0, 2, -1, 3.3, -2.7, 1.1, 2.2, -100]
 
 
 class Activation_Softmax:
-    
+
     def forward(self, inputs):
+        # Subtract the per-sample max before exponentiating: exp() grows
+        # explosively for large inputs (see np.exp(1000) below), so this
+        # keeps the largest value at exp(0)=1 and everything else <= 1,
+        # avoiding overflow without changing the final probabilities
+        # (the max cancels out during normalization).
         exp_values = np.exp(inputs - np.max(inputs, axis=1, keepdims=True))
         probabilities = exp_values / np.sum(exp_values, axis=1, keepdims=True)
         self.output = probabilities
         return self.output
-    
-    
-    
+
+
+
 
 print(np.exp(1))
 print(np.exp(10))
@@ -51,6 +56,9 @@ softmax.forward([[1, 2, 3]])
 print(softmax.output)
 
 # subtracted 3 - max from the list
+# Note: [-2, -1, 0] is just [1, 2, 3] with the max (3) subtracted from
+# each element — demonstrates that Softmax gives the same output either
+# way, confirming the max-subtraction trick doesn't change the result.
 substracted_softmax = softmax.forward([[-2, -1, 0]])
 
 print(substracted_softmax)
@@ -82,12 +90,13 @@ loss = loss_function.calculate(activation2.output, y)
 
 print(f"Loss: {loss}")
 
-
+# predictions: the class each sample was most confident about, i.e. the
+# index of the highest probability in each row.
 predictions = np.argmax(activation2.output, axis=1)
 
 if len(y.shape) == 2:
     y. np.argmax(y, axis=1)
-    
+
 accuracy = np.mean(predictions==y)
 
 

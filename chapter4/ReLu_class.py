@@ -14,13 +14,15 @@ from nnfs.datasets import spiral_data
 inputs = [0, 2, -1, 3.3, -2.7, 1.1, 2.2, -100]
 
 
-
+# Reusable ReLU activation class, applied after a Dense layer's forward
+# pass to introduce non-linearity (without it, stacked Dense layers would
+# collapse into an equivalent single linear layer).
 class Activation_ReLu:
-    
+
     def forward(self, input):
         self.output = np.maximum(0, input)
         return self.output
-    
+
 X, y = spiral_data(samples=100, classes=3)
 
 dense1 = Layer_Dense(2, 3)

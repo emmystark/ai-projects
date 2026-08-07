@@ -1,3 +1,7 @@
+# Chapter 4 scratch note: full Dense -> ReLU -> Dense -> Softmax pipeline,
+# pasted here commented-out for reference (mangled by a PDF copy-paste —
+# underscores split identifiers onto their own lines). The working,
+# uncommented version lives in softmax_class.py.
 # import numpy as np
 # import nnfs
 # from nnfs.datasets import spiral

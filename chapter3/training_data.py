@@ -1,3 +1,6 @@
+# Chapter 3: generating and visualizing the spiral training dataset, and
+# showing how a layer's weights/biases are initialized (small random
+# weights, zero biases) before any training happens.
 import numpy as np
 
 from nnfs.datasets import spiral_data
@@ -10,7 +13,7 @@ x, y = spiral_data(samples=100, classes=3)
 # plt.show()
 
 
-import nnfs 
+import nnfs
 
 nnfs.init()
 
